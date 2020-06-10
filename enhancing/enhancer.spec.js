@@ -1,4 +1,4 @@
-const { repair, succeed, fail } = require('./enhancer.js');
+const { repair, succeed, fail, get } = require('./enhancer.js');
 
 // test away!
 describe('enhancer functions', () => {
@@ -49,6 +49,19 @@ describe('enhancer functions', () => {
 			const failResult = fail(input);
 
 			expect(failResult).toEqual(result);
+		});
+	});
+	describe('test get function', () => {
+		it('return correct name', () => {
+			const input = {
+				name: 'Ewa',
+				enhancement: 2,
+				durability: 15,
+			};
+
+			const getResult = get(input);
+			expect(getResult.name).toEqual(`[+${input.enhancement}] ${input.name}`);
+			// expect(getResult.name).toEqual(input.name);
 		});
 	});
 });
